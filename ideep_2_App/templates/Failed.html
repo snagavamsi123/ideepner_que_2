@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="" align='center'>
+    <br><br>
+<h1 style='color:rgb(255, 28, 28)' class=''>Failed Transactions</h1>
+
+    
+    <table border="1" class='report_table'>
+    <tr class='report_table_heading' bgcolor='sky blue' align="center">
+        <td>Customer Id</td>
+        <td>Customer Name</td>
+        <td>No of Transactions</td>            
+    </tr>
+
+    {% for result in values %}
+        <tr align="center" style="color: turquoise;">
+            <td>{{result.payment_id}}</td>
+            <td>{{result.Order_id}}</td>
+            <td>{{result.status}}</td>
+            
+            
+        </tr>
+    {%endfor%}
+
+    
+</table>
+
+
+
+</div>
+{% endblock %}

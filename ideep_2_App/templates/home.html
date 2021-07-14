@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="" align='center'>
+    <br><br><br><br><br><br>
+    <h1 style='color:rgb(255, 28, 28)' class=''>Customer</h1>
+    <table border="1" class='report_table'>
+        <tr class='report_table_heading' bgcolor='sky blue' align="center">
+            <td>Customer Id</td>
+            <td>Customer Name</td>
+            <td>city</td>
+            <td>state</td>
+
+                        
+        </tr>
+        {% for result in values1 %}
+            <tr align="center" style="color: turquoise;">
+                <td>{{result.customer_no}}</td>
+                <td>{{result.customer_name}}</td>
+                <td>{{result.City}}</td>
+                <td>{{result.State}}</td>
+                
+                
+            </tr>
+        {%endfor%}
+
+    </table>
+    <br><br><br><br>
+    <h1  style='color:rgb(255, 28, 28)' class=''>Order</h1>
+    <table border="1" class='report_table'>
+        <tr class='<table border="1" class='report_table'>
+        <tr class='report_table_heading' bgcolor='sky blue' align="center">
+            <td>Order Id</td>
+            <td>Order Date</td>
+            <td>Order Amount</td>
+            <td>Customer Id</td>
+
+                        
+        </tr>
+        {% for result in values2 %}
+            <tr align="center" style="color: turquoise;">
+                <td>{{result.order_id}}</td>
+                <td>{{result.order_date}}</td>
+                <td>{{result.order_amount}}</td>
+                <td>{{result.customer_no}}</td>
+                
+                
+            </tr>
+        {%endfor%}
+
+    </table>
+    <br><br><br><br>
+    <h1 style='color:rgb(255, 28, 28)' class=''>Payments</h1>
+    <table border="1" class='report_table'>
+        <tr class='<table border="1" class='report_table'>
+        <tr class='report_table_heading' bgcolor='sky blue' align="center">
+            <td>Payment Id</td>
+            <td>Order ID</td>
+            <td>Status</td>
+            
+
+                        
+        </tr>
+        {% for result in values3 %}
+            <tr align="center" style="color: turquoise;">
+                <td>{{result.payment_id}}</td>
+                <td>{{result.Order_id}}</td>
+                <td>{{result.status}}</td>
+                
+                
+            </tr>
+        {%endfor%}
+
+    </table>
+
+
+
+</div>
+
+{% endblock %}
