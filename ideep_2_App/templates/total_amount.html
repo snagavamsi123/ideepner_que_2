@@ -3,7 +3,7 @@
 {% block content %}
 <div class="" align='center'>
     <br><br>
-<h1 style='color:rgb(255, 28, 28)' class=''>Failed Transactions</h1>
+<h1 style='color:rgb(255, 28, 28)' class=''>Total Amount Based on State</h1>
 
     
     <table border="1" class='report_table'>
@@ -16,8 +16,8 @@
     {% for result in values %}
         <tr align="center" style="color: turquoise;">
             <td>{{result.order_date}}</td>
-            <td>{{result.customer_id__City}}</td>
-            <td>{{result.order_amount}}</td>      
+            <td>{{result.City}}</td>
+            <td>{{result.state_amount}}</td>      
         </tr>
     {%endfor%} 
 

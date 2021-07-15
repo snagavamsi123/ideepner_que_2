@@ -17,13 +17,13 @@
 
     </tr>
 
-    {% for result in values2 %}
+    {% for result in values %}
         <tr align="center" style="color: turquoise;">
-            <td>{{result.id}}</td>
-            <td>{{result.customer_id}}</td>
-            <td>{{result.Order_id}}</td>    
+            <td>{{result.customer_no}}</td>
+            <td>{{result.customer_name}}</td>
+            <td>{{result.order_id}}</td>    
             <td>{{result.order_date}}</td>  
-            <td>{{result.order_count}}</td>    
+            <td>{{result.count}}</td>    
         </tr>
     {%endfor%} 
 
