@@ -30,6 +30,7 @@
     <table border="1" class='report_table'>
         <tr class='<table border="1" class='report_table'>
         <tr class='report_table_heading' bgcolor='sky blue' align="center">
+            
             <td>Order Id</td>
             <td>Order Date</td>
             <td>Order Amount</td>
@@ -39,6 +40,7 @@
         </tr>
         {% for result in values2 %}
             <tr align="center" style="color: turquoise;">
+               
                 <td>{{result.order_id}}</td>
                 <td>{{result.order_date}}</td>
                 <td>{{result.order_amount}}</td>

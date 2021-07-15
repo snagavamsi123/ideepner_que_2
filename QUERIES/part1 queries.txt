@@ -1,0 +1,12 @@
+select *,SUM(c) as count
+FROM (
+select *, count(*) as c 
+FROM (
+		select *
+		from ((ideep_queries.ideep_2_app_customer as cust
+		inner join ideep_queries.ideep_2_app_order as ord on cust.customer_no=ord.customer_no_id)
+		inner join ideep_queries.ideep_2_app_payment as pay on ord.order_id=pay.order_id_id)
+		) as outer_table
+GROUP BY order_id_id,status
+having (status)='failed') as table2
+group by customer_name;

@@ -15,7 +15,23 @@ def failed(request):
     values2 = Order.objects.all()
     values3=Payment.objects.all()
 
-    failed = Payment.objects.filter(status='failed')
+    #failed = Payment.objects.filter(status='failed')
+
+    #failed = Payment.objects.raw('select *, count(*) as c FROM ideep_queries.ideep_2_app_payment GROUP BY order_id_id,status having (ideep_queries.ideep_2_app_payment.status)="failed"')
+
+    failed = Customer.objects.raw('''
+    select *,SUM(c) as failed_count 
+    FROM (select *, count(*) as c 
+            FROM (select * 
+                FROM ((ideep_queries.ideep_2_app_customer as cust 
+                INNER JOIN ideep_queries.ideep_2_app_order AS ord 
+                    ON cust.customer_no=ord.customer_no_id) 
+                INNER JOIN ideep_queries.ideep_2_app_payment AS pay 
+                    ON ord.order_id=pay.order_id_id)) AS outer_table 
+                GROUP BY order_id_id,status having (status)='failed') as table2 
+                
+                GROUP BY customer_name ''')
+
            
     return render(request,'Failed.html',{'values':failed})
 
