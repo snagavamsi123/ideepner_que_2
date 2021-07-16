@@ -11,7 +11,7 @@ class Customer(models.Model):
 
 class Order(models.Model):
     order_id = models.AutoField(primary_key=True)
-    order_date = models.DateField(timezone.now())
+    order_date = models.DateField()
     order_amount = models.FloatField()
     customer_no = models.ForeignKey(Customer,on_delete=models.CASCADE,default=0)
     def __str__(self):

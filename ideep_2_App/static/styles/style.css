@@ -181,10 +181,33 @@ input:hover{
     transform: translate(-50%,0);
 }
 
+.add_new{
+    width: auto;
+    height: 30px;  
+    background-color: #efefef;
+    
+    
+}
 
 
+.add_new:hover{
+    color:rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
 
+.Add_Customer{
+    color:rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
 
+.Add_Order{
+    color:rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+.Payment{
+    color:rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
 
 
 

@@ -5,6 +5,9 @@ urlpatterns = [
     path('failed',views.failed,name='failed'),
     path('total_amount',views.total_amount,name='total_amount'),
     path('order_count',views.order_count,name='order_count'),
-    path('add_new',views.add,name='add'),
+    path('add_customer',views.add_customer,name='add_customer'),
+    path('add_order',views.add_order,name='add_order'),
+    path('payment',views.payment,name='payment'),
+
 ]
 

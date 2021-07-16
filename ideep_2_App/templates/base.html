@@ -15,9 +15,38 @@
             <form action='{%url "home" %}'>
                 <button class='btn'>Home</button>
             </form>
-            <form action='{%url "add" %}'>
-                <button class='btn'>Add New</button>
-            </form>
+            
+            <select name='add_new' class='add_new' onchange=location=this.value>
+                
+                <option class='Add_Customer' value="add_customer">
+                    Add New Data
+                </option>
+
+                <option class='Add_Customer' value="add_customer">
+                    Add Customer
+                </option>
+                
+                
+                <option class='Add_Order' value="add_order">
+                   Add Order
+                </option>
+                
+                
+                <option class='Payment' value="payment">
+                    Payment Details
+                </option>
+                
+            </select>
+
+
+
+
+
+
+
+
+
+
             <form action='{%url "failed" %}'>
                 <button class='btn'>Failed</button>
             </form>

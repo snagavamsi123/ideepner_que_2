@@ -52,8 +52,14 @@ def order_count(request):
     return render(request,'order_count.html',{'values':values})
 
 
-def add(request):
-    form = CustomerForm
-    form2=OrderForm
+def add_order(request):
+    form1 = OrderForm
+    return render(request,'add_order.html',{'form':form1})
+
+def add_customer(request):
+    form2=CustomerForm
+    return render(request,'add_customer.html',{'form':form2})
+
+def payment(request):
     form3=PaymentForm
-    return render(request,'add.html',{'form':form,'form2':form2,'form3':form3})
+    return render(request,'add_payment.html',{'form':form3})
