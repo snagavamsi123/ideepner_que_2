@@ -19,10 +19,12 @@ background-color: skyblue;
 
 .exe_index_body{
     background-image: url('/static/images/2.jpg');
+    background-attachment: fixed;
 }
 
 .base_index_body{
     background-image: url('/static/images/7.jpg');
+    background-attachment: fixed;
 }
 
 form{
@@ -30,7 +32,7 @@ form{
 }
 
 .header_div{
-    position: absolute;
+    position: fixed;
     right: 0%;
     top: 0%;
     padding: 10px;
@@ -172,6 +174,14 @@ input:hover{
     left: 0%;
     
 }
+
+.addform_table{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+
+
 
 
 

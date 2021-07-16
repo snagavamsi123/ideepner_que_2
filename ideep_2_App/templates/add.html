@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br<br><br<br><br>
+
+<div class='addform_table'>
+    <h2>Customer Form</h2>
+        <table>
+        {{form.as_table}}
+        </table>
+        <div>
+            <br>
+        <input type="submit">
+        </div>
+
+        <br><br><br>
+
+    <h2>Order Form</h2>
+        <table>
+        {{form2.as_table}}
+        </table>
+        <div>
+            <br>
+        <input type="submit">
+        </div>
+
+
+
+        <br><br><br>
+
+    <h2>Payment Form</h2>
+        <table>
+        {{form3.as_table}}
+        </table>
+        <div>
+            <br>
+        <input type="submit">
+        </div>
+
+        <br><br><br><br><br><br><br><br><br>
+<h1></h1>
+</div>
+
+
+
+{% endblock %}

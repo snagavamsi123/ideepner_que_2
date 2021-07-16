@@ -15,7 +15,7 @@ class Order(models.Model):
     order_amount = models.FloatField()
     customer_no = models.ForeignKey(Customer,on_delete=models.CASCADE,default=0)
     def __str__(self):
-        return str(self.order_id)
+        return str('order ID' + str(self.order_id))
 
 status_chioces = (('failed','FAILED'),('paid','PAID'))
 class Payment(models.Model):

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Customer,Order,Payment
+from .forms import CustomerForm,OrderForm,PaymentForm
 
 def home(request):
     values1=Customer.objects.all()
@@ -49,4 +50,10 @@ def order_count(request):
         '''
     )
     return render(request,'order_count.html',{'values':values})
-    
+
+
+def add(request):
+    form = CustomerForm
+    form2=OrderForm
+    form3=PaymentForm
+    return render(request,'add.html',{'form':form,'form2':form2,'form3':form3})
