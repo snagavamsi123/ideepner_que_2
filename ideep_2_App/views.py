@@ -41,10 +41,10 @@ def order_count(request):
 
     values = Customer.objects.raw(
         '''
-        select *,count(order_id) as count
-		from ((ideep_queries.ideep_2_app_customer as cust
-		inner join ideep_queries.ideep_2_app_order as ord on cust.customer_no=ord.customer_no_id))
-        group by customer_name;
+        select * ,ROW_NUMBER() over (partition by customer_no_id order by order_id) as order_count
+        from (ideep_queries.ideep_2_app_order as ord
+		inner join ideep_queries.ideep_2_app_customer as cust on cust.customer_no=ord.customer_no_id)
+        order by order_id;
         
         '''
     )
