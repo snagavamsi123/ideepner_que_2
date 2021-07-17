@@ -3,8 +3,11 @@
 {% block content %}
 <br><br<br><br<br><br>
 <div class='addform_table'>
+    <h3>{{message}}</h3>
+
 <h2>Payment Form</h2>
     <form action="" method="POST">
+        {% csrf_token %}
         <table>
         {{form.as_table}}
         </table>
