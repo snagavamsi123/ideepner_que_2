@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Customer,Order,Payment
-from .forms import CustomerForm,OrderForm,PaymentForm
+from .forms import CustomerForm, Loginform,OrderForm,PaymentForm,Signupform
 
 def home(request):
     values1=Customer.objects.all()
@@ -98,3 +98,13 @@ def payment(request):
             return render(request,'add_payment.html',{'form':form3,'message':message}) 
     form3=PaymentForm
     return render(request,'add_payment.html',{'form':form3})
+
+
+def signup(request):
+    signupform = Signupform
+    return render(request,'signup.html',{'signupform' : signupform})
+
+def login(request):
+    loginform = Loginform
+    return render(request,'login.html',{'loginform':loginform})
+    

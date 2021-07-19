@@ -1,5 +1,16 @@
 from django.db import models
+from django.db.models.aggregates import Min
 from django.utils import timezone
+
+class Signup(models.Model):
+    name= models.CharField(max_length=15)
+    username = models.CharField(max_length=15)
+    email = models.EmailField()
+    password = models.CharField(max_length=20)
+
+
+
+
 
 class Customer(models.Model):
     customer_no = models.AutoField(primary_key=True)
