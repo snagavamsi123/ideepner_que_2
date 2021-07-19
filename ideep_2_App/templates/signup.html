@@ -8,13 +8,18 @@
 <br>
 
 <center>
-
+    <h3>{{ message }}</h3>
     <h1>Sign Up</h1>
+
+<form method="POST" action="signup">
+    {% csrf_token %}
 <table>
 {{signupform.as_table}}
 </table>
 <br>
 <input type="submit" placeholder="Sign Up">
+
+</form>
 
 </center>
 

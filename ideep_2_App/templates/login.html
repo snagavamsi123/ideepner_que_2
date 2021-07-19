@@ -8,16 +8,16 @@
 <br>
 
 <center>
-
+    <h3>{{message}}</h3>
     <h1>Login</h1>
+<form action="login" method="POST">
+    {% csrf_token %}
 <table>
 {{loginform.as_table}}
 </table>
 <br>
 <input type="submit" placeholder="login">
-
+</form>
 </center>
-
-
 
 {% endblock %}

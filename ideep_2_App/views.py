@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .models import Customer,Order,Payment
+from django.core.checks import messages
+from django.shortcuts import redirect, render
+from .models import Customer,Order,Payment,Signup
 from .forms import CustomerForm, Loginform,OrderForm,PaymentForm,Signupform
 
 def home(request):
@@ -101,10 +102,34 @@ def payment(request):
 
 
 def signup(request):
+    if request.method=='POST':
+        signupform = Signupform(request.POST)
+        if signupform.is_valid():
+            signupform.save()
+            message = 'Signup successful Please Login'
+            loginform = Loginform
+            return render(request,'login.html',{'loginform':loginform,'message':message})
+        else:
+            message = 'Sign Up Failed'
+            return render(request,'signup.html',{'signupform' : signupform,'message':message})
+    
     signupform = Signupform
     return render(request,'signup.html',{'signupform' : signupform})
 
 def login(request):
+    if request.method=='POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        data = Signup.objects.all()
+
+        for i in data:
+            if username==i.username and password==i.password:
+                return redirect('home')
+            else:
+                loginform = Loginform
+                message = 'Authentication Failed'
+                return render(request,'login.html',{'loginform':loginform,'message':message}) 
+    
     loginform = Loginform
     return render(request,'login.html',{'loginform':loginform})
     

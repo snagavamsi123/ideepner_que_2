@@ -8,10 +8,6 @@ class Signup(models.Model):
     email = models.EmailField()
     password = models.CharField(max_length=20)
 
-
-
-
-
 class Customer(models.Model):
     customer_no = models.AutoField(primary_key=True)
     customer_name = models.CharField(max_length=25)
