@@ -7,6 +7,8 @@ def home(request):
     values1=Customer.objects.all()
     values2 = Order.objects.all()
     values3=Payment.objects.all()
+    
+
     return render(request,'home.html',{'values1':values1,'values2':values2,'values3':values3})
 
 def failed(request):
@@ -120,15 +122,17 @@ def login(request):
     if request.method=='POST':
         username = request.POST['username']
         password = request.POST['password']
-        data = Signup.objects.all()
+        data1 = Signup.objects.filter(username=username,password=password).values('username','password')
+                
+        #data = Signup.objects.all()
 
-        for i in data:
-            if username==i.username and password==i.password:
+        for data in data1:
+            if username==data['username'] and password==data['password']:
                 return redirect('home')
-            else:
-                loginform = Loginform
-                message = 'Authentication Failed'
-                return render(request,'login.html',{'loginform':loginform,'message':message}) 
+        else:
+            loginform = Loginform
+            message = 'Authentication Failed'
+            return render(request,'login.html',{'loginform':loginform,'message':message}) 
     
     loginform = Loginform
     return render(request,'login.html',{'loginform':loginform})
