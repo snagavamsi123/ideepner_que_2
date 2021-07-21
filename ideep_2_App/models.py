@@ -7,7 +7,9 @@ class Signup(models.Model):
     username = models.CharField(max_length=15)
     email = models.EmailField()
     password = models.CharField(max_length=20)
-
+    def __str__(self):
+        return str(self.username)
+        
 class Customer(models.Model):
     customer_no = models.AutoField(primary_key=True)
     customer_name = models.CharField(max_length=25)
