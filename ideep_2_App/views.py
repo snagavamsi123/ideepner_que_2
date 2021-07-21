@@ -2,14 +2,17 @@ from django.core.checks import messages
 from django.shortcuts import redirect, render
 from .models import Customer,Order,Payment,Signup
 from .forms import CustomerForm, Loginform,OrderForm,PaymentForm,Signupform
+from django.views.decorators.cache import cache_control
+
 
 def home(request):
+
     values1=Customer.objects.all()
     values2 = Order.objects.all()
     values3=Payment.objects.all()
     
-
     return render(request,'home.html',{'values1':values1,'values2':values2,'values3':values3})
+
 
 def failed(request):
     failed = Customer.objects.raw('''
@@ -27,6 +30,7 @@ def failed(request):
            
     return render(request,'Failed.html',{'values':failed})
 
+
 def total_amount(request): 
 
     values = Customer.objects.raw(
@@ -39,7 +43,7 @@ def total_amount(request):
         '''
     )
     return render(request,'total_amount.html',{'values':values})
-    
+
 
 def order_count(request):
 
@@ -69,6 +73,7 @@ def add_order(request):
     form1 = OrderForm
     return render(request,'add_order.html',{'form':form1})
 
+@cache_control(no_cache=True,no_store=True,must_revalidate=True)
 def add_customer(request):
     if request.method=='POST':
         form2=CustomerForm(request.POST)
@@ -89,6 +94,8 @@ def add_customer(request):
     form2=CustomerForm
     return render(request,'add_customer.html',{'form':form2})
 
+
+@cache_control(no_cache=True,no_store=True,must_revalidate=True)
 def payment(request):
     if request.method=='POST':
         form3=PaymentForm(request.POST)
@@ -118,6 +125,7 @@ def signup(request):
     signupform = Signupform
     return render(request,'signup.html',{'signupform' : signupform})
 
+@cache_control(no_cache=True,no_store=True,must_revalidate=True)
 def login(request):
     if request.method=='POST':
         username = request.POST['username']
@@ -128,7 +136,10 @@ def login(request):
 
         for data in data1:
             if username==data['username'] and password==data['password']:
-                return redirect('home')
+                values1=Customer.objects.all()
+                values2 = Order.objects.all()
+                values3=Payment.objects.all()
+                return render(request,'home.html',{'values1':values1,'values2':values2,'values3':values3})
         else:
             loginform = Loginform
             message = 'Authentication Failed'
