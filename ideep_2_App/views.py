@@ -4,6 +4,9 @@ from .models import Customer,Order,Payment,Signup
 from .forms import CustomerForm, Loginform,OrderForm,PaymentForm,Signupform
 from django.views.decorators.cache import cache_control
 
+from django.contrib.auth.hashers import make_password
+
+print("Hashed password is heyyyy:", make_password("Vamsi"))
 
 def home(request):
 
@@ -114,7 +117,16 @@ def signup(request):
     if request.method=='POST':
         signupform = Signupform(request.POST)
         if signupform.is_valid():
-            signupform.save()
+            #-------------------------
+            user_ = request.POST['username']
+            password_ = request.POST['password']
+            email_ = request.POST['email']
+            name_ = request.POST['name']
+            encrypted_pswrd = make_password(password_)
+            #need to check thisone
+            signup = Signupform(username=user_,password=encrypted_pswrd,email=email_,name=name_)
+            signup.save()
+            #=============================
             message = 'Signup successful Please Login'
             loginform = Loginform
             return render(request,'login.html',{'loginform':loginform,'message':message})
